@@ -13,8 +13,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
-        android:layout_width="280dp"
-        android:layout_height="290dp"
+        android:layout_width="240dp"
+        android:layout_height="260dp"
         android:src="@drawable/pizza_splash_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
