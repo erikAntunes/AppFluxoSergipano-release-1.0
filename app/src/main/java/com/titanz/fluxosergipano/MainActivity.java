@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
 
         tabLayout = findViewById(R.id.tablayout_main_id);
         viewPager = findViewById(R.id.viewpager_main_id);
