@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.AddFragment(new EntradaFragment(),"Entrada" );
         adapter.AddFragment(new SaidaFragment(),"Saída" );
         adapter.AddFragment(new TotalFragment(),"Total" );
-
         // Adapter Setup
 
         viewPager.setAdapter(adapter);
