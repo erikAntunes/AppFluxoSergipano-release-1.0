@@ -135,6 +135,7 @@
         android:textStyle="bold"
         android:textColor="@color/colorWhite"
         android:text="Registrar"
+        android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
