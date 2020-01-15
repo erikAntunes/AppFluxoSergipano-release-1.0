@@ -26,10 +26,10 @@
         app:tabMode="fixed"
         android:layout_gravity="bottom"
         android:textAlignment="center"
-        app:tabRippleColor="@color/colorAccent"
+        app:tabRippleColor="@color/colorPrimary"
         app:tabSelectedTextColor="@color/colorWhite"
         app:tabTextColor="@color/colorPrimary"
-        app:tabIndicatorColor="@color/colorWhite"
+        app:tabIndicatorColor="@color/colorPrimary"
         android:background="@color/colorPrimaryDark">
     </com.google.android.material.tabs.TabLayout>
 

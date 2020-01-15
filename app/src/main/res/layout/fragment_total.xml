@@ -11,12 +11,14 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout_total_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark"
+        app:tabSelectedTextColor="@color/colorWhite"
+        app:tabRippleColor="@color/colorPrimary"
         app:tabGravity="fill"
         app:tabMode="fixed"
-        app:tabIndicatorColor="@color/colorPrimaryDark"
-        app:tabTextColor="@color/colorWhite"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabTextColor="@color/colorPrimary"
         >
     </com.google.android.material.tabs.TabLayout>
 

@@ -31,7 +31,7 @@ public class TotalFragment extends Fragment {
 
         MenuAdapter adapter = new MenuAdapter(getChildFragmentManager());
         adapter.AddFragment(new Total_Final_Fragment(),"Balanço" );
-        adapter.AddFragment(new Total_Saida_Fragment(),"Entrada" );
+        adapter.AddFragment(new Total_Entrada_Fragment(),"Entrada" );
         adapter.AddFragment(new Total_Saida_Fragment(),"Saída" );
 
         viewPagerTotal.setAdapter(adapter);
