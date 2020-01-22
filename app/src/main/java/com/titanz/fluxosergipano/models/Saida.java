@@ -1,15 +1,24 @@
 package com.titanz.fluxosergipano.models;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "saidas")
 public class Saida {
 
+    @NonNull
+    @PrimaryKey
     private String data;
 
+    @ColumnInfo(name = "saida_descricao")
     private String descricao;
 
+    @ColumnInfo(name = "saida_valor")
     private double valor;
 
     private String status;
-
 
     public String getData() {
         return data;

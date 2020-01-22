@@ -1,17 +1,21 @@
 package com.titanz.fluxosergipano;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.titanz.fluxosergipano.adapters.MenuAdapter;
+import com.titanz.fluxosergipano.db.EntradaDatabase;
 import com.titanz.fluxosergipano.view.EntradaFragment;
 import com.titanz.fluxosergipano.view.SaidaFragment;
 import com.titanz.fluxosergipano.view.TotalFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static EntradaDatabase entradaDatabase;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -20,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        entradaDatabase = Room.databaseBuilder(getApplicationContext(),EntradaDatabase.class,"entradadb").allowMainThreadQueries().build();
 
         tabLayout = findViewById(R.id.tablayout_main_id);
         viewPager = findViewById(R.id.viewpager_main_id);
