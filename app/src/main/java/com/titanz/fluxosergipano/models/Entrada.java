@@ -2,22 +2,21 @@ package com.titanz.fluxosergipano.models;
 
 public class Entrada {
 
-    private int id;
+    private String data;
+
+    private String descricao;
 
     private double valor;
 
     private String status;
 
-    private String descricao;
 
-
-
-    public int getId() {
-        return id;
+    public String getData() {
+        return data;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public double getValor() {
