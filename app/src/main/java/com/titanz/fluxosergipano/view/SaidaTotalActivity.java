@@ -1,13 +1,9 @@
 package com.titanz.fluxosergipano.view;
 
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle;
 import android.widget.TextView;
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
@@ -15,21 +11,19 @@ import com.titanz.fluxosergipano.adapters.SaidaAdapter;
 import com.titanz.fluxosergipano.models.Saida;
 import java.util.List;
 
-
-public class Total_Saida_Fragment extends Fragment {
-
+public class SaidaTotalActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSaida;
     private SaidaAdapter saidaAdapter;
     private TextView saidaValorTextView;
 
 
-    @NonNull
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_saida_total);
+        getSupportActionBar().hide();
 
-        View view = inflater.inflate(R.layout.fragment_total__saida_,container,false);
-
-        saidaValorTextView = view.findViewById(R.id.saida_valorTotal_TextView_id);
+        saidaValorTextView = findViewById(R.id.saida_valorTotal_TextView_id);
 
         List<Saida> saidas = MainActivity.saidaDatabase.saidaDao().getSaidas();
 
@@ -43,13 +37,10 @@ public class Total_Saida_Fragment extends Fragment {
 
 
             saidaAdapter = new SaidaAdapter(saidas);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-            recyclerViewSaida = view.findViewById(R.id.recyclerView_saida_id);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerViewSaida = findViewById(R.id.recyclerView_saida_id);
             recyclerViewSaida.setAdapter(saidaAdapter);
             recyclerViewSaida.setLayoutManager(layoutManager);
         }
-
-        return view;
     }
-
 }

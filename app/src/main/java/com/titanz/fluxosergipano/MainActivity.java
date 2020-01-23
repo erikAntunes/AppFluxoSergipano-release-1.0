@@ -1,6 +1,7 @@
 package com.titanz.fluxosergipano;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static EntradaDatabase entradaDatabase;
     public static SaidaDatabase saidaDatabase;
-
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -42,5 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 }
