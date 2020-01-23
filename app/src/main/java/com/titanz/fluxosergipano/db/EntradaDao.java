@@ -1,8 +1,6 @@
 package com.titanz.fluxosergipano.db;
 
-
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -18,8 +16,5 @@ public interface EntradaDao {
 
     @Query("select * from entradas")
     public List<Entrada> getEntradas();
-
-    @Delete
-    public void deleteEntrada(Entrada entrada);
 
 }

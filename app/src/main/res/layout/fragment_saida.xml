@@ -74,6 +74,7 @@
             android:textColorHint="@color/colorWhite">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/saida_descricao_TextInput_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -113,6 +114,7 @@
             android:background="@color/colorAccent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/saida_valor_TextInput_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -170,7 +172,7 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_add_saida_id"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/colorPrimaryDark"

@@ -43,13 +43,13 @@ public class EntradaFragment extends Fragment {
                 String dataFormatada = formataData.format(data);
 
                 String entradaDescricao = descricaoEntradaTextInput.getText().toString();
-                Double entradaValor = Double.parseDouble(valorEntradaTextInput.getText().toString());
-
+                Double entradaValor = Double.parseDouble(String.valueOf(valorEntradaTextInput.getText()));
 
                 Entrada entrada = new Entrada();
                 entrada.setData(dataFormatada);
                 entrada.setDescricao(entradaDescricao);
                 entrada.setValor(entradaValor);
+                entrada.setStatus("Entrada");
 
                 MainActivity.entradaDatabase.entradaDao().addEntrada(entrada);
                 Toast.makeText(getActivity(),"Entrada Registrada Com Sucesso",Toast.LENGTH_SHORT).show();
