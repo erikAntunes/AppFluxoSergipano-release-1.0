@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/balanco_total_textView"
         android:layout_marginTop="60dp"
-        android:layout_width="398dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="center"
@@ -29,7 +29,7 @@
 
     <TextView
         android:id="@+id/balanco_saida_textView"
-        android:layout_width="398dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginTop="60dp"
@@ -45,9 +45,8 @@
 
     <TextView
         android:id="@+id/balanco_entrada_textView"
-        android:layout_width="398dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:text="R$ 0,00"
