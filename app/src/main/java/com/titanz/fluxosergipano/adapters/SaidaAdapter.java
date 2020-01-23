@@ -49,6 +49,7 @@ public class SaidaAdapter extends RecyclerView.Adapter<SaidaAdapter.SaidaViewHol
 
     public class SaidaViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView getTextView_pedido_data;
         private TextView textView_pedido_descricao;
         private TextView textView_pedido_valor;
         private TextView textView_pedido_status;
@@ -57,6 +58,7 @@ public class SaidaAdapter extends RecyclerView.Adapter<SaidaAdapter.SaidaViewHol
         public SaidaViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            getTextView_pedido_data = itemView.findViewById(R.id.pedido_data_id);
             textView_pedido_descricao = itemView.findViewById(R.id.pedido_descricao_id);
             textView_pedido_valor = itemView.findViewById(R.id.pedido_valor_id);
             textView_pedido_status = itemView.findViewById(R.id.pedido_status_id);
@@ -66,8 +68,9 @@ public class SaidaAdapter extends RecyclerView.Adapter<SaidaAdapter.SaidaViewHol
 
         public void setupSaida(Saida saida) {
 
+            getTextView_pedido_data.setText(saida.getData());
             textView_pedido_descricao.setText(saida.getDescricao());
-            textView_pedido_valor.setText(String.valueOf(saida.getValor()));
+            textView_pedido_valor.setText("R$ "+String.valueOf(saida.getValor()));
             textView_pedido_status.setText(saida.getStatus());
 
         }

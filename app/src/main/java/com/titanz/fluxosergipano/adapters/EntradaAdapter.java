@@ -51,6 +51,7 @@ public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaV
 
     public class EntradaViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView textView_pedido_data;
         private TextView textView_pedido_descricao;
         private TextView textView_pedido_valor;
         private TextView textView_pedido_status;
@@ -59,6 +60,7 @@ public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaV
         public EntradaViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            textView_pedido_data = itemView.findViewById(R.id.pedido_data_id);
             textView_pedido_descricao = itemView.findViewById(R.id.pedido_descricao_id);
             textView_pedido_valor = itemView.findViewById(R.id.pedido_valor_id);
             textView_pedido_status = itemView.findViewById(R.id.pedido_status_id);
@@ -69,8 +71,9 @@ public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaV
 
         public void setupEntrada(Entrada entrada){
 
+            textView_pedido_data.setText(entrada.getData());
             textView_pedido_descricao.setText(entrada.getDescricao());
-            textView_pedido_valor.setText(String.valueOf(entrada.getValor()));
+            textView_pedido_valor.setText("R$ "+String.valueOf(entrada.getValor()));
             textView_pedido_status.setText(entrada.getStatus());
         }
     }

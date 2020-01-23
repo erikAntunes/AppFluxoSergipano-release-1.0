@@ -23,6 +23,7 @@ public class Total_Entrada_Fragment extends Fragment {
     private TextView entradaValorTextView;
 
 
+
     @NonNull
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

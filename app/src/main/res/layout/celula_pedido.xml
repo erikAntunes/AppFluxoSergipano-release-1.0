@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="135dp"
     android:layout_marginTop="10dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
@@ -12,17 +12,28 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/colorPrimaryDark"
         app:cardCornerRadius="20dp">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:orientation="horizontal"
         android:padding="5dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center">
 
+        <TextView
+            android:id="@+id/pedido_data_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data"
+            android:layout_marginTop="10dp"
+            android:textSize="23sp"
+            android:layout_gravity="top|left"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:layout_marginLeft="20dp"/>
 
     <TextView
         android:id="@+id/pedido_descricao_id"
@@ -30,10 +41,9 @@
         android:layout_height="wrap_content"
         android:text="Calamuça"
         android:textSize="25sp"
-        android:layout_gravity="center|left"
+        android:layout_gravity="center"
         android:textStyle="bold"
-        android:textColor="@color/colorWhite"
-        android:layout_marginLeft="5dp"/>
+        android:textColor="@color/colorWhite"/>
 
     <TextView
         android:id="@+id/pedido_valor_id"
@@ -41,18 +51,19 @@
         android:layout_height="wrap_content"
         android:text="R$ 10.00"
         android:textColor="@color/colorGreen"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:layout_marginLeft="60dp"/>
+        android:textSize="25sp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="bottom|right"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/pedido_status_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Entrada"
-        android:textSize="20sp"
-        android:layout_gravity="center|right"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="left|bottom"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"/>
