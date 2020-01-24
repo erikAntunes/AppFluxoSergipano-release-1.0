@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
@@ -19,6 +22,7 @@ public class EntradaTotalActivity extends AppCompatActivity {
     private RecyclerView recyclerViewEntrada;
     private EntradaAdapter entradaAdapter;
     private TextView entradaValorTextView;
+    private ImageView button_voltar;
 
 
     @Override
@@ -33,7 +37,7 @@ public class EntradaTotalActivity extends AppCompatActivity {
 
         final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(R.color.colorPrimaryDark);
-        pDialog.setTitleText("Carregando Entradas!");
+        pDialog.setTitleText("Carregando Entradas");
 
         pDialog.setCancelable(true);
 
@@ -45,6 +49,15 @@ public class EntradaTotalActivity extends AppCompatActivity {
                 pDialog.dismiss();
             }
         },1100);
+
+        button_voltar = findViewById(R.id.button_voltar_entrada_id);
+
+        button_voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         double entradaTotal = 0d;
         for (int i = 0; i < entradas.size(); i++) {

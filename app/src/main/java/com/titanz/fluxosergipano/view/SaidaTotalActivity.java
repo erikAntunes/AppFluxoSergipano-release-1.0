@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
@@ -18,6 +20,7 @@ public class SaidaTotalActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSaida;
     private SaidaAdapter saidaAdapter;
     private TextView saidaValorTextView;
+    private ImageView button_voltar;
 
 
     @Override
@@ -32,7 +35,7 @@ public class SaidaTotalActivity extends AppCompatActivity {
 
         final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(R.color.colorPrimaryDark);
-        pDialog.setTitleText("Carregando Saídas!");
+        pDialog.setTitleText("Carregando Saídas");
 
         pDialog.setCancelable(true);
 
@@ -44,6 +47,15 @@ public class SaidaTotalActivity extends AppCompatActivity {
                 pDialog.dismiss();
             }
         },1100);
+
+        button_voltar = findViewById(R.id.button_voltar_saida_id);
+
+        button_voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         double saidaTotal = 0d;
         for (int i = 0; i < saidas.size(); i++) {

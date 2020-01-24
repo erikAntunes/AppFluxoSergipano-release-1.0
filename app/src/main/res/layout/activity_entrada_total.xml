@@ -82,4 +82,14 @@
         android:textSize="45sp"
         android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/button_voltar_entrada_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/button_voltar"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView2"
+        app:layout_constraintEnd_toStartOf="@+id/circleImageView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/circleImageView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
