@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/balanco_container_id"
     android:background="@color/colorPrimaryDark"
     tools:context=".view.BalancoTotalActivity">
+
+    <ImageView
+        android:id="@+id/balanco_screenshot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/balanco_total_textView"
@@ -113,6 +123,7 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorWhite"
@@ -145,5 +156,18 @@
         app:layout_constraintEnd_toStartOf="@+id/circleImageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/circleImageView2" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/reset_circleView_id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/reset_database"
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.406">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

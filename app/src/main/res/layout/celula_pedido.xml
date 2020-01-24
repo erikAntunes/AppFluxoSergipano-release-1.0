@@ -32,14 +32,14 @@
             android:layout_marginLeft="20dp"/>
 
         <TextView
-            android:padding="3dp"
             android:id="@+id/pedido_descricao_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Calamuça"
+            android:text="Pizza"
+            android:textStyle="bold"
             android:textColor="@color/colorAccent"
-            android:textSize="25sp" />
+            android:textSize="23sp" />
 
     <TextView
         android:id="@+id/pedido_valor_id"
