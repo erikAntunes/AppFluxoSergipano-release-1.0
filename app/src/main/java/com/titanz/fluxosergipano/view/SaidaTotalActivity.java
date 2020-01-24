@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.adapters.SaidaAdapter;
 import com.titanz.fluxosergipano.models.Saida;
 import java.util.List;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SaidaTotalActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSaida;
@@ -26,6 +29,21 @@ public class SaidaTotalActivity extends AppCompatActivity {
         saidaValorTextView = findViewById(R.id.saida_valorTotal_TextView_id);
 
         List<Saida> saidas = MainActivity.saidaDatabase.saidaDao().getSaidas();
+
+        final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(R.color.colorPrimaryDark);
+        pDialog.setTitleText("Carregando Saídas!");
+
+        pDialog.setCancelable(true);
+
+        pDialog.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pDialog.dismiss();
+            }
+        },1100);
 
         double saidaTotal = 0d;
         for (int i = 0; i < saidas.size(); i++) {
