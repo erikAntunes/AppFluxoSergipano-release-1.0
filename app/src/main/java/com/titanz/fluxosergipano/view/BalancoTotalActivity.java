@@ -142,7 +142,7 @@ public class BalancoTotalActivity extends AppCompatActivity {
 
     public void irParaBalanco () {
 
-        Intent intent = new Intent(getApplicationContext(), BalancoTotalActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
 
@@ -151,7 +151,7 @@ public class BalancoTotalActivity extends AppCompatActivity {
         MainActivity.entradaDatabase.clearAllTables();
         MainActivity.saidaDatabase.clearAllTables();
 
-        Toast.makeText(getApplicationContext(),"Banco de dados Reiniciado",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Fechamento enviado para Galeria",Toast.LENGTH_LONG).show();
 
     }
 
