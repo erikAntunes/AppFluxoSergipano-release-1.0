@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.titanz.fluxosergipano.view.LoginActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -11,15 +13,15 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
-        irParaTelaMain();
+        irParaTelaLogin();
     }
 
-    private void irParaTelaMain() {
+    private void irParaTelaLogin() {
         Handler handle = new Handler();
         handle.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
