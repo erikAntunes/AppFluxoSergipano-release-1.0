@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.adapters.EntradaAdapter;
@@ -60,7 +62,7 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
         button_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                irParaMain();
             }
         });
 
@@ -81,7 +83,7 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
     }
 
     @Override
-    public void onEntradaClicada(Entrada entrada) {
+    public void onEntradaClicada(final Entrada entrada) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(EntradaTotalActivity.this);
 
@@ -90,8 +92,9 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //captureScreen();
-                        //limparDataBase();
+
+                        MainActivity.entradaDatabase.entradaDao().deleteEntrada(entrada);
+                        Toast.makeText(getApplicationContext(),"Entrada Excluida com Sucesso",Toast.LENGTH_SHORT);
                         irParaEntradaTotal();
                     }
                 })
@@ -108,10 +111,24 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
 
     }
 
+    @Override
+    public void onBackPressed(){
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+
+    }
+
     public void irParaEntradaTotal(){
 
         Intent intent = new Intent(getApplicationContext(), EntradaTotalActivity.class);
         startActivity(intent);
 
+    }
+
+    public void irParaMain(){
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 }

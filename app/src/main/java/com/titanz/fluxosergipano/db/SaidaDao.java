@@ -1,6 +1,7 @@
 package com.titanz.fluxosergipano.db;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import com.titanz.fluxosergipano.models.Saida;
@@ -15,5 +16,8 @@ public interface SaidaDao {
 
     @Query("select * from saidas")
     public List<Saida> getSaidas();
+
+    @Delete
+    public void deleteSaida(Saida saida);
 
 }

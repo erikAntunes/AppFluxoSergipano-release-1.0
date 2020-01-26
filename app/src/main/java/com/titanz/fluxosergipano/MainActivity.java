@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(R.color.colorPrimaryDark);
-        pDialog.setTitleText("Boas Vendas!");
+        pDialog.setTitleText("Carregando");
 
         pDialog.setCancelable(true);
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 pDialog.dismiss();
             }
-        },1300);
+        },900);
 
         tabLayout = findViewById(R.id.tablayout_main_id);
         viewPager = findViewById(R.id.viewpager_main_id);

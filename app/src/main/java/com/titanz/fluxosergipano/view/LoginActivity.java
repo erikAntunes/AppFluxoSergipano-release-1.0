@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(R.color.colorPrimaryDark);
-        pDialog.setTitleText("Carregando Entradas");
+        pDialog.setTitleText("Boas Vendas");
 
         pDialog.setCancelable(true);
 

@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.adapters.SaidaAdapter;
@@ -81,7 +83,7 @@ public class SaidaTotalActivity extends AppCompatActivity implements SaidaListen
     }
 
     @Override
-    public void onSaidaClicada(Saida saida) {
+    public void onSaidaClicada(final Saida saida) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(SaidaTotalActivity.this);
 
@@ -90,8 +92,10 @@ public class SaidaTotalActivity extends AppCompatActivity implements SaidaListen
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //captureScreen();
-                        //limparDataBase();
+
+                        MainActivity.saidaDatabase.saidaDao().deleteSaida(saida);
+                        Toast.makeText(getApplicationContext(),"Saída Excluida com Sucesso",Toast.LENGTH_SHORT);
+                        irParaMain();
                         irParaSaidaTotal();
                     }
                 })
@@ -106,6 +110,20 @@ public class SaidaTotalActivity extends AppCompatActivity implements SaidaListen
         alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
+    }
+
+    @Override
+    public void onBackPressed(){
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+
+    }
+
+    private void irParaMain() {
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 
     public void irParaSaidaTotal(){
