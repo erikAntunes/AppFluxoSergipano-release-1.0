@@ -1,8 +1,12 @@
 package com.titanz.fluxosergipano.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -12,12 +16,14 @@ import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.adapters.SaidaAdapter;
 import com.titanz.fluxosergipano.models.Saida;
+import com.titanz.fluxosergipano.models.SaidaListener;
+
 import java.text.DecimalFormat;
 import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class SaidaTotalActivity extends AppCompatActivity {
-    
+public class SaidaTotalActivity extends AppCompatActivity implements SaidaListener {
+
     private RecyclerView recyclerViewSaida;
     private SaidaAdapter saidaAdapter;
     private TextView saidaValorTextView;
@@ -66,11 +72,46 @@ public class SaidaTotalActivity extends AppCompatActivity {
             DecimalFormat df = new DecimalFormat("##.##");
             saidaValorTextView.setText("R$ "+df.format(saidaTotal));
 
-            saidaAdapter = new SaidaAdapter(saidas);
+            saidaAdapter = new SaidaAdapter(this,saidas);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerViewSaida = findViewById(R.id.recyclerView_saida_id);
             recyclerViewSaida.setAdapter(saidaAdapter);
             recyclerViewSaida.setLayoutManager(layoutManager);
         }
+    }
+
+    @Override
+    public void onSaidaClicada(Saida saida) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SaidaTotalActivity.this);
+
+        builder.setMessage("Deseja Excluir Saída?")
+                .setCancelable(false)
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //captureScreen();
+                        //limparDataBase();
+                        irParaSaidaTotal();
+                    }
+                })
+                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+    }
+
+    public void irParaSaidaTotal(){
+
+        Intent intent = new Intent(getApplicationContext(), SaidaTotalActivity.class);
+        startActivity(intent);
+
     }
 }

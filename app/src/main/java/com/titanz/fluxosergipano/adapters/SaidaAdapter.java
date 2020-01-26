@@ -9,16 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.models.Saida;
+import com.titanz.fluxosergipano.models.SaidaListener;
 
 import java.util.List;
 
 public class SaidaAdapter extends RecyclerView.Adapter<SaidaAdapter.SaidaViewHolder> {
 
     private List<Saida> listaSaida;
+    private SaidaListener saidaListener;
 
-    public SaidaAdapter(List<Saida> listaSaida) {
+    public SaidaAdapter(SaidaListener saidaListener,List<Saida> listaSaida) {
 
-
+        this.saidaListener = saidaListener;
         this.listaSaida = listaSaida;
     }
 
@@ -35,10 +37,17 @@ public class SaidaAdapter extends RecyclerView.Adapter<SaidaAdapter.SaidaViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SaidaViewHolder saidaViewHolder, int index) {
+    public void onBindViewHolder(@NonNull SaidaViewHolder saidaViewHolder, final int index) {
         final  Saida saida = listaSaida.get(index);
 
         saidaViewHolder.setupSaida(saida);
+        saidaViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                saidaListener.onSaidaClicada(listaSaida.get(index));
+            }
+        });
 
     }
 

@@ -9,16 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.models.Entrada;
+import com.titanz.fluxosergipano.models.EntradaListener;
 
 import java.util.List;
 
 public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaViewHolder> {
 
     private List<Entrada> listaEntrada;
+    private EntradaListener entradaListener;
 
-    public EntradaAdapter(List<Entrada> listaEntrada) {
+    public EntradaAdapter(EntradaListener entradaListener,List<Entrada> listaEntrada) {
 
-
+        this.entradaListener = entradaListener;
         this.listaEntrada = listaEntrada;
     }
 
@@ -34,10 +36,19 @@ public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EntradaViewHolder entradaViewHolder, int index) {
+    public void onBindViewHolder(@NonNull EntradaViewHolder entradaViewHolder, final int index) {
         final Entrada entrada = listaEntrada.get(index);
 
         entradaViewHolder.setupEntrada(entrada);
+
+        entradaViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                entradaListener.onEntradaClicada(listaEntrada.get(index));
+
+            }
+        });
 
     }
 
