@@ -6,15 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.adapters.EntradaAdapter;
 import com.titanz.fluxosergipano.models.Entrada;
+import java.text.DecimalFormat;
 import java.util.List;
-
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class EntradaTotalActivity extends AppCompatActivity {
@@ -62,10 +61,10 @@ public class EntradaTotalActivity extends AppCompatActivity {
         double entradaTotal = 0d;
         for (int i = 0; i < entradas.size(); i++) {
             Entrada objEntrada = entradas.get(i);
-
             entradaTotal += objEntrada.getValor();
 
-            entradaValorTextView.setText("R$ "+String.valueOf(entradaTotal));
+            DecimalFormat df = new DecimalFormat("##.##");
+            entradaValorTextView.setText("R$ "+df.format(entradaTotal));
 
             entradaAdapter = new EntradaAdapter(entradas);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

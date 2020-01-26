@@ -18,6 +18,7 @@ import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.models.Entrada;
 import com.titanz.fluxosergipano.models.Saida;
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -115,7 +116,8 @@ public class BalancoTotalActivity extends AppCompatActivity {
             Entrada objEntrada = entradas.get(i);
 
             entradaTotal += objEntrada.getValor();
-            valorEntradaTextView.setText("R$ "+String.valueOf(entradaTotal));
+            DecimalFormat df = new DecimalFormat("##.##");
+            valorEntradaTextView.setText("R$ "+df.format(entradaTotal));
         } return entradaTotal;
     }
 
@@ -127,7 +129,8 @@ public class BalancoTotalActivity extends AppCompatActivity {
             Saida objSaida = saidas.get(i);
 
             saidaTotal += objSaida.getValor();
-            valorSaidaTextView.setText("R$ " + String.valueOf(saidaTotal));
+            DecimalFormat df = new DecimalFormat("##.##");
+            valorSaidaTextView.setText("R$ "+df.format(saidaTotal));
         }
         return saidaTotal;
     }
@@ -137,7 +140,9 @@ public class BalancoTotalActivity extends AppCompatActivity {
         double entradaTotal = getEntrada();
         double saidaTotal = getSaida();
         double balancoTotal = (entradaTotal - saidaTotal);
-        valorTotalTextView.setText("R$ "+ String.valueOf(balancoTotal));
+
+        DecimalFormat df = new DecimalFormat("##.##");
+        valorTotalTextView.setText("R$ "+df.format(balancoTotal));
     }
 
     public void irParaBalanco () {

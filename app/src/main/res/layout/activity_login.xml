@@ -78,7 +78,7 @@
             android:textColorHint="@color/colorWhite">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/entrada_descricao_TextInput_id"
+                android:id="@+id/login_usuario_TextInput_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -117,11 +117,11 @@
             android:background="@color/colorPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/entrada_valor_TextInput_id"
+                android:id="@+id/login_senha_TextInput_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:inputType="numberDecimal"
+                android:inputType="numberPassword"
                 android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:textStyle="bold"
@@ -173,7 +173,7 @@
 
 
         <Button
-            android:id="@+id/button_add_entrada_id"
+            android:id="@+id/button_login_id"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/colorGreen"

@@ -12,11 +12,12 @@ import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.adapters.SaidaAdapter;
 import com.titanz.fluxosergipano.models.Saida;
+import java.text.DecimalFormat;
 import java.util.List;
-
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SaidaTotalActivity extends AppCompatActivity {
+    
     private RecyclerView recyclerViewSaida;
     private SaidaAdapter saidaAdapter;
     private TextView saidaValorTextView;
@@ -60,11 +61,10 @@ public class SaidaTotalActivity extends AppCompatActivity {
         double saidaTotal = 0d;
         for (int i = 0; i < saidas.size(); i++) {
             Saida objSaida = saidas.get(i);
-
             saidaTotal += objSaida.getValor();
 
-            saidaValorTextView.setText("R$ " + String.valueOf(saidaTotal));
-
+            DecimalFormat df = new DecimalFormat("##.##");
+            saidaValorTextView.setText("R$ "+df.format(saidaTotal));
 
             saidaAdapter = new SaidaAdapter(saidas);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
