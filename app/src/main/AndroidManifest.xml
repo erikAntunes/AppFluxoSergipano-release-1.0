@@ -12,10 +12,18 @@
         android:roundIcon="@drawable/pizza_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.LoginActivity"></activity>
-        <activity android:name=".view.BalancoTotalActivity" />
-        <activity android:name=".view.SaidaTotalActivity" />
-        <activity android:name=".view.EntradaTotalActivity" />
+        <activity android:name=".view.LoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".view.BalancoTotalActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.SaidaTotalActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.EntradaTotalActivity"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
