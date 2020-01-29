@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             //Se não houver nada no campo de email aparecerá essa mensagem
             senhaEditText.setError("Digite uma Senha");
 
-        } if (usuarioEditText.getText().toString().equals("deninho@sergipano")&& senhaEditText.getText().toString().equals("123456")) {
+        } if (usuarioEditText.getText().toString().equals("deninho.sergipano")&& senhaEditText.getText().toString().equals("123456")) {
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
