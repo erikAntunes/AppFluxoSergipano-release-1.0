@@ -61,9 +61,10 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
             @Override
             public void afterTextChanged(Editable editable) {
 
-                filter(editable.toString());
 
-            }
+                filter(editable.toString());
+                }
+
         });
 
         List<Entrada> entradas = MainActivity.entradaDatabase.entradaDao().getEntradas();
@@ -113,23 +114,29 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
 
         List<Entrada> entradas = MainActivity.entradaDatabase.entradaDao().getEntradas();
 
-        for (Entrada entrada : entradas) {
-            if(entrada.getData().substring(0,2).toLowerCase().contains(text.toLowerCase())){
+        if (entradas.size() == 0) {
+            Toast.makeText(getApplicationContext(),"Entradas Vazias",Toast.LENGTH_SHORT).show();
 
-                filteredList.add(entrada);
+        } else {
+            for (Entrada entrada : entradas) {
+                if (entrada.getData().substring(0, 2).toLowerCase().contains(text.toLowerCase())) {
 
+                    filteredList.add(entrada);
+
+                }
             }
-        }
+
         double entradaTotal = 0d;
         for (int i = 0; i < filteredList.size(); i++) {
             Entrada objEntrada = filteredList.get(i);
             entradaTotal += objEntrada.getValor();
 
             DecimalFormat df = new DecimalFormat("##.##");
-            entradaValorTextView.setText("R$ "+df.format(entradaTotal));
-        }
+            entradaValorTextView.setText("R$ " + df.format(entradaTotal));
 
-        entradaAdapter.filterList(filteredList);
+        }
+            entradaAdapter.filterList(filteredList);
+        }
     }
 
     @Override
