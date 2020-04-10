@@ -11,6 +11,7 @@ import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.models.Entrada;
 import com.titanz.fluxosergipano.models.EntradaListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaViewHolder> {
@@ -56,6 +57,13 @@ public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaV
     @Override
     public int getItemCount() {
         return listaEntrada.size();
+    }
+
+    public void filterList(ArrayList<Entrada> filteredList){
+
+        listaEntrada = filteredList;
+        notifyDataSetChanged();
+
     }
 
 

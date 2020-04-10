@@ -9,7 +9,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +24,7 @@ import com.titanz.fluxosergipano.models.Entrada;
 import com.titanz.fluxosergipano.models.EntradaListener;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -30,6 +34,7 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
     private EntradaAdapter entradaAdapter;
     private TextView entradaValorTextView;
     private ImageView button_voltar;
+    private EditText entradaSearchTextInput;
 
 
     @Override
@@ -39,6 +44,27 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
         getSupportActionBar().hide();
 
         entradaValorTextView = findViewById(R.id.entrada_valorTotal_TextView_id);
+
+
+        entradaSearchTextInput = findViewById(R.id.entrada_search_id);
+        entradaSearchTextInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                filter(editable.toString());
+
+            }
+        });
 
         List<Entrada> entradas = MainActivity.entradaDatabase.entradaDao().getEntradas();
 
@@ -80,6 +106,30 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
             recyclerViewEntrada.setAdapter(entradaAdapter);
             recyclerViewEntrada.setLayoutManager(layoutManager);
         }
+    }
+
+    private void filter(String text) {
+        ArrayList<Entrada> filteredList = new ArrayList<>();
+
+        List<Entrada> entradas = MainActivity.entradaDatabase.entradaDao().getEntradas();
+
+        for (Entrada entrada : entradas) {
+            if(entrada.getData().substring(0,2).toLowerCase().contains(text.toLowerCase())){
+
+                filteredList.add(entrada);
+
+            }
+        }
+        double entradaTotal = 0d;
+        for (int i = 0; i < filteredList.size(); i++) {
+            Entrada objEntrada = filteredList.get(i);
+            entradaTotal += objEntrada.getValor();
+
+            DecimalFormat df = new DecimalFormat("##.##");
+            entradaValorTextView.setText("R$ "+df.format(entradaTotal));
+        }
+
+        entradaAdapter.filterList(filteredList);
     }
 
     @Override
