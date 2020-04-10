@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.titanz.fluxosergipano.MainActivity;
 import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.adapters.EntradaAdapter;
 import com.titanz.fluxosergipano.models.Entrada;
 import com.titanz.fluxosergipano.models.EntradaListener;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,46 +40,26 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
         setContentView(R.layout.activity_entrada_total);
         getSupportActionBar().hide();
 
-        entradaValorTextView = findViewById(R.id.entrada_valorTotal_TextView_id);
+        SetupLoader();
 
+        entradaValorTextView = findViewById(R.id.entrada_valorTotal_TextView_id);
 
         entradaSearchTextInput = findViewById(R.id.entrada_search_id);
         entradaSearchTextInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
 
-
                 filter(editable.toString());
-                }
-
+            }
         });
 
         List<Entrada> entradas = MainActivity.entradaDatabase.entradaDao().getEntradas();
-
-        final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(R.color.colorPrimaryDark);
-        pDialog.setTitleText("Carregando Entradas");
-
-        pDialog.setCancelable(true);
-
-        pDialog.show();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                pDialog.dismiss();
-            }
-        },1100);
 
         button_voltar = findViewById(R.id.button_voltar_entrada_id);
 
@@ -93,21 +70,14 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
             }
         });
 
-        double entradaTotal = 0d;
-        for (int i = 0; i < entradas.size(); i++) {
-            Entrada objEntrada = entradas.get(i);
-            entradaTotal += objEntrada.getValor();
+        setupValorTotal(entradas);
 
-            DecimalFormat df = new DecimalFormat("##.##");
-            entradaValorTextView.setText("R$ "+df.format(entradaTotal));
-
-            entradaAdapter = new EntradaAdapter(this,entradas);
+            entradaAdapter = new EntradaAdapter(this, entradas);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerViewEntrada = findViewById(R.id.recyclerView_entrada_id);
             recyclerViewEntrada.setAdapter(entradaAdapter);
             recyclerViewEntrada.setLayoutManager(layoutManager);
         }
-    }
 
     private void filter(String text) {
         ArrayList<Entrada> filteredList = new ArrayList<>();
@@ -115,7 +85,7 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
         List<Entrada> entradas = MainActivity.entradaDatabase.entradaDao().getEntradas();
 
         if (entradas.size() == 0) {
-            Toast.makeText(getApplicationContext(),"Entradas Vazias",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Entradas Vazias", Toast.LENGTH_SHORT).show();
 
         } else {
             for (Entrada entrada : entradas) {
@@ -126,15 +96,8 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
                 }
             }
 
-        double entradaTotal = 0d;
-        for (int i = 0; i < filteredList.size(); i++) {
-            Entrada objEntrada = filteredList.get(i);
-            entradaTotal += objEntrada.getValor();
+            setupValorTotal(filteredList);
 
-            DecimalFormat df = new DecimalFormat("##.##");
-            entradaValorTextView.setText("R$ " + df.format(entradaTotal));
-
-        }
             entradaAdapter.filterList(filteredList);
         }
     }
@@ -151,7 +114,7 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
                     public void onClick(DialogInterface dialog, int which) {
 
                         MainActivity.entradaDatabase.entradaDao().deleteEntrada(entrada);
-                        Toast.makeText(getApplicationContext(),"Entrada Excluida com Sucesso",Toast.LENGTH_SHORT);
+                        Toast.makeText(getApplicationContext(), "Entrada Excluida com Sucesso", Toast.LENGTH_SHORT).show();
                         irParaEntradaTotal();
                     }
                 })
@@ -169,23 +132,60 @@ public class EntradaTotalActivity extends AppCompatActivity implements EntradaLi
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
 
     }
 
-    public void irParaEntradaTotal(){
+    public void irParaEntradaTotal() {
 
         Intent intent = new Intent(getApplicationContext(), EntradaTotalActivity.class);
         startActivity(intent);
 
     }
 
-    public void irParaMain(){
+    public void irParaMain() {
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
+    }
+
+    public void setupValorTotal(List<Entrada> listaTotalAtual) {
+
+        if (listaTotalAtual.size() == 0){
+            DecimalFormat df = new DecimalFormat("##.##");
+            entradaValorTextView.setText("R$ " + df.format(0d));
+
+        }else
+            {
+            double entradaTotal = 0d;
+            for (int i = 0; i < listaTotalAtual.size(); i++) {
+            Entrada objEntrada = listaTotalAtual.get(i);
+            entradaTotal += objEntrada.getValor();
+
+            DecimalFormat df = new DecimalFormat("##.##");
+            entradaValorTextView.setText("R$ " + df.format(entradaTotal));
+            }
+        }
+    }
+
+    public void SetupLoader(){
+
+        final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(R.color.colorPrimaryDark);
+        pDialog.setTitleText("Carregando Entradas");
+
+        pDialog.setCancelable(true);
+
+        pDialog.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pDialog.dismiss();
+            }
+        }, 1100);
     }
 }

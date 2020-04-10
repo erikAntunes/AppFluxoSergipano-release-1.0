@@ -11,6 +11,7 @@ import com.titanz.fluxosergipano.R;
 import com.titanz.fluxosergipano.models.Saida;
 import com.titanz.fluxosergipano.models.SaidaListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SaidaAdapter extends RecyclerView.Adapter<SaidaAdapter.SaidaViewHolder> {
@@ -54,6 +55,12 @@ public class SaidaAdapter extends RecyclerView.Adapter<SaidaAdapter.SaidaViewHol
     @Override
     public int getItemCount() {
         return listaSaida.size();
+    }
+
+    public void filterList(ArrayList<Saida> filteredList){
+
+        listaSaida = filteredList;
+        notifyDataSetChanged();
     }
 
     public class SaidaViewHolder extends RecyclerView.ViewHolder {

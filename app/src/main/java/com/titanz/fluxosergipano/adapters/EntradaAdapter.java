@@ -63,10 +63,7 @@ public class EntradaAdapter extends RecyclerView.Adapter<EntradaAdapter.EntradaV
 
         listaEntrada = filteredList;
         notifyDataSetChanged();
-
     }
-
-
 
     public class EntradaViewHolder extends RecyclerView.ViewHolder {
 

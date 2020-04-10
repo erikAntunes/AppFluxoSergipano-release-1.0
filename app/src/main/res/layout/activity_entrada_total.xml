@@ -19,7 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView"
         app:layout_constraintVertical_bias="0.0">
-
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <com.google.android.material.card.MaterialCardView
@@ -86,6 +85,7 @@
             android:textColor="@color/colorGreen"
             android:textSize="40sp"
             android:textStyle="bold" />
+
     </com.google.android.material.card.MaterialCardView>
 
     <ImageView
@@ -98,7 +98,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/circleImageView2" />
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView1"
         android:layout_width="wrap_content"
@@ -107,32 +106,32 @@
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/colorAccent"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/circleImageView2"
-        app:layout_constraintTop_toTopOf="@+id/circleImageView2"
-        app:layout_constraintVertical_bias="0.04000002">
+        app:layout_constraintTop_toTopOf="@+id/circleImageView2">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@color/colorAccent"
-        android:textColorHint="@color/colorWhite"
-       >
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/colorAccent"
+            android:textColorHint="@color/colorWhite">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/entrada_search_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorWhite"
-            android:gravity="center"
-            android:hint="Dia"
-            android:inputType="numberDecimal"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </com.google.android.material.textfield.TextInputLayout>
-</com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/entrada_search_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorWhite"
+                android:gravity="center"
+                android:hint="Dia"
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
